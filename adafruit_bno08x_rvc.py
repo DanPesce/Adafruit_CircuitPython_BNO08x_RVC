@@ -114,8 +114,8 @@ class BNO08x_RVC:
         """
         # try to read initial packet start byte
         data = None
-        start_time = time.monotonic()
-        while time.monotonic() - start_time < self._read_timeout:
+        start_time = time.time()
+        while time.time() - start_time < self._read_timeout:
             data = self._uart.read(2)
             # print("data", data)
             if data[0] == 0xAA and data[1] == 0xAA:
